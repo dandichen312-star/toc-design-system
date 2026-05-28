@@ -35,10 +35,12 @@ macOS / Linux 可以用定时任务自动拉取更新。打开终端运行：
 SKILL.md
 skills/ui-page-generation/
   DESIGN_TOKENS.md
+  theme-presets.md
+  theme-scope.md
   PAGE_RULES.md
   COMPONENT_RULES.md
   docs/components/
   assets/icons/
 ```
 
-`SKILL.md` 是 Cursor 识别 skill 的入口文件；`skills/ui-page-generation/` 存放具体设计规范、组件规则和图标资源。
+`SKILL.md` 是 Cursor 识别 skill 的入口文件；`skills/ui-page-generation/` 存放具体设计规范、主题规则、组件规则和图标资源。
