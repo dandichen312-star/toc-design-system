@@ -57,6 +57,7 @@ BottomSheet:
 - `overlay` 用于遮罩页面，必须存在。
 - `container` / `sheet` 承载弹窗内容，必须存在。
 - `header` 只放标题，不放正文。
+- 有 `header` 时，标题默认居中。
 - `body` 承载正文、说明、表单、列表或权益内容。
 - `footer` 只放操作按钮或次级操作，不承载主内容。
 - `footer` 遵守 `COMPONENT_RULES.md` 的 `action-footer` 吸底规则。
@@ -65,6 +66,7 @@ BottomSheet:
 - 当 `footer.action = single-action` 且主按钮文案为「我知道了」或「好的」时，必须隐藏 `close`。
 - 「我知道了」和「好的」已表达关闭确认语义，不再额外显示右上角关闭按钮。
 - 弹窗必须有明确主操作或明确关闭方式。
+- 点击遮罩默认不关闭弹窗；只有页面明确声明允许点击遮罩关闭时，才可以覆盖此规则。
 
 ## 4. 尺寸与布局
 
@@ -85,8 +87,9 @@ marketing-modal:
 
 bottom-sheet:
   width: fill / 100%
-  max-height: viewport safe area
+  max-height: 640px
   radius: radius-sheet top-left / top-right
+  header-height: 60px
   padding-left: spacing-24
   padding-right: spacing-24
   padding-top: spacing-24
@@ -109,10 +112,18 @@ container-layer:
 - 超长内容时，Modal 最大高度为 `540px`，超过后 `body` 内部滚动。
 - 营销内容不得撑高容器；内容超过 `330px` 时，优先精简权益信息，必须保留时仅 `body` 内部滚动。
 - 超长内容滚动时，`header` 和 `footer` 必须保持可见。
-- BottomSheet 宽度默认 `fill / 100%`，高度由内容和安全区决定。
+- BottomSheet 宽度默认 `fill / 100%`，最大高度固定为当前设计稿基准值 `640px`。
+- BottomSheet 默认使用内容自适应高度（`hug-content`），不允许无明确业务原因直接使用接近满屏的固定高度。
+- 有 `header` 的 BottomSheet，标题区固定高度使用当前设计稿基准值 `60px`。
 - BottomSheet 内容过长时，`body` 内部滚动。
+- 只有当业务明确要求长内容承载、沉浸式阅读或大体量选择列表时，BottomSheet 才允许提升到更大的弹层高度；此时仍应优先使用 `max-height + body scroll`，不优先写死固定高。
 - BottomSheet 左、右、上内边距使用 `spacing-24`。
 - BottomSheet 底部内边距使用 `safe-area-bottom`，不额外叠加 `spacing-24`。
+- 当 BottomSheet 没有 `footer` 时，正文内容区必须停在底部安全区之上。
+- 当 BottomSheet 没有 `footer` 时，正文内容区左、右内边距固定使用 `spacing-32`。
+- 无 `footer` 的 BottomSheet，正文内容区宽度跟随弹层可用宽度自适应，不允许额外缩成固定窄内容区。
+- 无 `footer` 的 BottomSheet，正文内容区到底部安全区上边界固定使用 `spacing-40`。
+- 因此无 `footer` 的 BottomSheet，正文内容区底部总留白 = `spacing-40 + safe-area-bottom`。
 
 ## 5. 内部间距
 
@@ -168,6 +179,7 @@ with-close:
 - 底部营销弹窗主体内容到按钮使用 `spacing-40`。
 - 关闭按钮悬浮在容器右上角，不参与正文与按钮区的流式布局。
 - 关闭按钮层级必须高于标题和正文。
+- 带 `header` 的 BottomSheet 中，关闭按钮固定在标题区右上角，标题保持居中。
 
 ## 6. 操作按钮规则
 

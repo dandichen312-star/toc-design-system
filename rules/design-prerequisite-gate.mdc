@@ -1,0 +1,58 @@
+---
+description: 业务页面生成前必须先完成需求澄清与 PRD 确认；无 PRD 禁止直接 HTML/Figma 出图
+alwaysApply: true
+---
+
+# 设计前置门禁（Design Prerequisite Gate）
+
+## 适用范围
+
+用户请求**新建或重做**金融 H5 业务页面/流程页面时，无论产出方式是 HTML、Figma、Canvas 或 MCP，均适用。
+
+触发词包括但不限于：生成页面、画 Figma、写 HTML、搭建首页/表单页/结果页/弹窗、在 Figma 中画出、create a screen、build in Figma。
+
+## 强制顺序
+
+```txt
+requirements-analysis（澄清 + PRD）
+        ↓ 用户确认
+ui-page-generation / Figma 实现
+```
+
+## 开工前检查（必须执行）
+
+1. 识别页面/流程 slug（如 `loan-flow`、`bind-bank-card`）
+2. 检查 `.cursor/requirements/{slug}-prd.md` 是否存在
+3. PRD 状态是否为「已确认」，或用户在**当前对话**明确说「PRD OK / 开始生成 / 开始画」
+
+## 未通过门禁时（禁止实现）
+
+- 禁止调用 Figma MCP（含 `use_figma`、`generate_figma_design` 等）
+- 禁止新建或重写业务页面 HTML/CSS/JS（根目录 `*.html` 及对应样式脚本）
+- 禁止跳过澄清直接声称「已在 Figma/HTML 生成完成」
+
+必须改为：
+
+1. 读取 `.cursor/skills/requirements-analysis/SKILL.md`
+2. 一句话复述理解 + 列出 P0 缺口
+3. **第 1 轮**定向澄清（≤5 题，路由：页面类型、场景、CTA、流程位置）
+4. **第 2 轮**结构澄清（≤5 题：**首页/主页面模块多选** HA01；**流程后续页面** FB01；表单字段等 BR-C）— **未完成前禁止写 PRD**
+5. 输出 PRD 到 `.cursor/requirements/{slug}-prd.md`（状态：draft）
+6. 询问用户确认后再进入 UI/Figma
+
+## 通过门禁后
+
+- HTML：读 `ui-page-generation/SKILL.md`；禁止 `financial-app-demo.css`
+- Figma：读 `figma-generate-design` + `figma-use`；按 PRD 组件清单实现
+
+## 优先级
+
+本规则**优先于** Figma 插件 skill 的「直接创建页面」类触发。
+即使用户说「在 Figma 画出 XXX」，若无已确认 PRD，仍先走需求澄清。
+
+## 例外（可跳过澄清）
+
+- 用户明确引用已确认 PRD 路径（如「按 bind-bank-card-prd.md 生成」）
+- 用户明确说「跳过需求梳理 / 按默认假设推进」
+- 仅维护设计系统（token、组件 doc、PAGE_RULES），不涉及新业务页面
+- 仅修复已有页面且对应 PRD 已存在

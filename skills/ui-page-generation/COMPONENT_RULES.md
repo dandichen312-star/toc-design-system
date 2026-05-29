@@ -184,10 +184,14 @@ Tag: docs/components/Tag.md
 Tabs: docs/components/Tabs.md
 Notice: docs/components/Notice.md
 AmountText: docs/components/AmountText.md
+Agreement: docs/components/Agreement.md
+BorrowAmountInput: docs/components/BorrowAmountInput.md
+RepaymentPlan: docs/components/RepaymentPlan.md
 ```
 
 ## 8. AI 读取规则
 
+- **禁止**引用 `financial-app-demo.css` 或用 demo 页面 class 代替组件文档实现；HTML 产出须自包含 token，执行优先级见 `SKILL.md`。
 - 页面生成读取与执行优先级以 `PAGE_RULES.md` 的“页面生成读取与执行优先级”为准。
 - 生成页面时，先由 `PAGE_RULES.md` 判断页面类型、页面骨架、模块顺序、页面级间距、组件外部位置和组件可用宽度。
 - 再读取本文档确认全局组件约束、组件选择原则、前景对比、背景渐隐、数字字体和禁止临时样式。

@@ -244,7 +244,18 @@ marketing-page-orange:
 - `review-waiting-page` / `review-result-page` / `result-page` 禁止使用 `gradient-surface-brand-strong`。
 - 切换 `brand theme` 只允许替换同档位主题色，不允许将上述页面背景提升为更强档位。
 
-用户提供背景图规则：
+用户提供图片规则：
+
+- 用户提供截图、参考图、竞品图、logo 截图时，默认只作为视觉参考使用。
+- 视觉参考图只用于识别品牌色、构图、信息层级、文案和视觉风格，不允许自动上传到 Figma。
+- 不允许把用户提供的截图或参考图直接作为页面图片素材、logo 素材、背景图或组件填充使用。
+- 不允许描摹、复刻或抽象还原参考图中的 logo 图形、字形和构图。
+- 不允许用圆形、文字、色块等方式组合出与参考图接近的 logo。
+- 未获得正式 logo 素材使用授权时，页面只能使用中性 `Logo Placeholder` 或直接省略 logo。
+- 只有用户明确说明“上传这张图”“替换为这个素材”“把这张图作为 logo / 背景 / 图片资源使用”时，才允许上传并作为 Figma asset 使用。
+- 如果用户只说“参考这个 logo / 根据这个图生成”，AI 只能提取产品名、品牌色方向和页面氛围，不得还原 logo 本身。
+
+用户明确提供背景图并要求使用时：
 
 - 用户提供 png / jpg / webp 时，将图片填入当前页面类型的 `background-layer`。
 - 背景图高度跟随 `background-layer` 容器高度，不单独决定页面背景高度。
@@ -362,6 +373,9 @@ task-home-page:
 - 首页默认展示 `bottom-tab-bar`。
 - 首页按钮必须跟随模块，例如额度主卡、任务卡、活动卡内部按钮。
 - 借款首页必须有首页额度主卡。
+- 借款首页如存在金额输入模块，必须使用 `BorrowAmountInput.md`，不允许替换为普通 `Input`。
+- `BorrowAmountInput` 在借款首页中默认占满当前页面内容区可用宽度，跟随页面内容区自适应。
+- `BorrowAmountInput` 在借款首页中默认不额外包裹白色底卡片；金额输入区域应直接跟随当前页面背景或所属业务模块背景。
 - 任务型首页必须有状态卡和任务列表卡。
 - 首页中的额度主卡、任务卡、任务列表卡、权益卡、活动卡、产品推荐列表卡都使用 `Card.md` 的场景规则。
 - 首页模块之间使用 `spacing-12`。
@@ -398,6 +412,9 @@ complex-form-flow-page:
 - 表单默认采用单列纵向排列。
 - 说明提示区和协议区按需出现。
 - 键盘弹起时，底部按钮区需要保持可见。
+- 借款表单页、借款申请页中的金额输入模块必须使用 `BorrowAmountInput.md`，不能用普通 `Input` 代替。
+- `BorrowAmountInput` 在表单流程页中默认占满当前页面内容区可用宽度，跟随页面内容区自适应。
+- `BorrowAmountInput` 在表单流程页中默认不额外包裹白色底卡片；若页面需要容器承载，只能沿用当前表单卡片或模块容器背景，不单独新增一层白底输入底。
 - 表单项遵守 `Form.md`、`FormItem.md`、`Input.md`、`PickerSheet.md`。
 - `picker-row` 点击后使用 `PickerSheet.md`。
 
@@ -441,6 +458,7 @@ detail-page:
 - 详情页适用于借款详情、账单详情、还款详情。
 - 详情页顶部可包含金额区。
 - 信息卡片区默认采用多组卡片分区展示。
+- 还款详情页如存在“按期列表 + 日期 + 每期金额 + 纵向时间轴”的还款计划结构，必须使用 `RepaymentPlan.md`。
 - 说明文案和风险提示按需出现。
 - 详情页允许插入营销模块。
 - 详情页存在强主按钮时，可使用 `action-footer`。
@@ -581,6 +599,7 @@ marketing-page:
 
 ## 19. 禁止项
 
+- **禁止**在 HTML 页面中引用 `financial-app-demo.css` 或依赖 demo 专用 class；页面必须自包含 token 并按组件文档实现（详见 `SKILL.md`）。
 - 不要把首页主按钮默认画成吸底按钮。
 - Figma 完整页面生成时，不要省略 status-bar、home-indicator 或首页 bottom-tab-bar。
 - 不要让正文内容被标题栏遮挡。
@@ -593,3 +612,5 @@ marketing-page:
 - 不要在页面生成时重新绘制组件内部结构。
 - 不要用页面规则覆盖 Card、Button、Icon、Input、Form 等组件文档中的内部规则。
 - 不要同时读取旧页面规则后覆盖本文档中的最新约定。
+- 不要在借款首页、借款表单页、借款申请页中用普通 `Input` 替代 `BorrowAmountInput`。
+- 不要为 `BorrowAmountInput` 默认额外添加白色底卡片或固定窄宽容器。

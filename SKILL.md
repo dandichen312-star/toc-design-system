@@ -11,21 +11,25 @@ Use this skill for financial lending product UI work, especially Mobile / H5 pag
 
 All generated UI must follow the design system documents in this repository. Do not invent temporary colors, font sizes, spacing, radii, shadows, icons, components, or page patterns when an existing rule applies.
 
+For new or redesigned financial H5 business pages and flows, run requirements analysis before UI generation. Read `skills/requirements-analysis/SKILL.md`, complete the required clarification rounds, write a PRD, and wait for user confirmation before creating HTML, Figma screens, or visual mockups.
+
 ## Reading Order
 
 When generating or reviewing a page, read the documents in this order:
 
-1. `skills/ui-page-generation/DESIGN_TOKENS.md`
-2. `skills/ui-page-generation/theme-presets.md`
-3. `skills/ui-page-generation/theme-scope.md`
-4. `skills/ui-page-generation/PAGE_RULES.md`
-5. `skills/ui-page-generation/COMPONENT_RULES.md`
-6. Only the relevant component docs in `skills/ui-page-generation/docs/components/`
+1. `skills/requirements-analysis/SKILL.md` if the page or flow has no confirmed PRD
+2. `skills/ui-page-generation/DESIGN_TOKENS.md`
+3. `skills/ui-page-generation/theme-presets.md`
+4. `skills/ui-page-generation/theme-scope.md`
+5. `skills/ui-page-generation/PAGE_RULES.md`
+6. `skills/ui-page-generation/COMPONENT_RULES.md`
+7. Only the relevant component docs in `skills/ui-page-generation/docs/components/`
 
 Do not read unrelated component docs unless the current page uses that component.
 
 ## Page Generation Rules
 
+- Do not generate a new or redesigned business page before the PRD is confirmed, unless the user explicitly asks to skip requirements analysis.
 - Use `PAGE_RULES.md` as the only page-level entry point.
 - Use `DESIGN_TOKENS.md` as the source of all color, typography, spacing, radius, shadow, z-index, motion, and numeric text decisions.
 - Use `theme-presets.md` and `theme-scope.md` for brand theme selection, scene theme scope, theme fallback, and theme switching boundaries.
