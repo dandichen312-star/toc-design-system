@@ -71,6 +71,61 @@ check: assets/icons/icon-check.svg
 message: assets/icons/icon-message.svg
 ```
 
+## 5.1 页面与组件扩展图标
+
+```txt
+tab-home: assets/icons/icon-tab-home.svg
+tab-home-active: assets/icons/icon-tab-home-active.svg
+tab-account: assets/icons/icon-tab-account.svg
+tab-account-active: assets/icons/icon-tab-account-active.svg
+status-waiting: assets/icons/icon-status-waiting.svg
+status-success: assets/icons/icon-status-success.svg
+status-fail: assets/icons/icon-status-fail.svg
+checkbox-default: assets/icons/icon-checkbox-default.svg
+checkbox-selected: assets/icons/icon-checkbox-selected.svg
+task-auth: assets/icons/icon-task-auth.svg
+task-profile: assets/icons/icon-task-profile.svg
+card-task-default: assets/icons/card-task-default.svg
+benefit-limit: assets/icons/icon-benefit-limit.svg
+benefit-coupon: assets/icons/icon-benefit-coupon.svg
+product-default: assets/icons/icon-product-default.svg
+toast-info: assets/icons/toast-info.svg
+toast-warning: assets/icons/toast-warning.svg
+toast-loading: assets/icons/toast-loading.svg
+```
+
+## 5.2 品牌与业务扩展图标
+
+```txt
+home-brand-logo: assets/icons/home-brand-logo.svg
+address: assets/icons/icon-address.svg
+customer-service: assets/icons/icon-customer-servic.svg
+notice-bar-default: assets/icons/icon-notice-bar-default.svg
+notice-bar-default-alt: assets/icons/icon-notice-bar-default-1.svg
+```
+
+规则：
+
+- `home-brand-logo` 用于首页 Header / 额度主卡等品牌 logo 位；尺寸由页面模块决定，不强制 24×24。
+- `icon-customer-servic` 为历史文件名（缺 e），引用时保持文件名不变。
+- Notice 条图标优先 `icon-notice-bar-default`；设计稿双态时可使用 `-1` 变体。
+
+## 5.3 空状态插图图标
+
+```txt
+empty-network: assets/icons/icon-empty-network.svg
+empty-notice: assets/icons/icon-empty-notice.svg
+empty-bankcard: assets/icons/icon-empty-bankcard.svg
+empty-coupon: assets/icons/icon-empty-coupon.svg
+empty-cardpackage: assets/icons/icon-empty-cardpackage.svg
+empty-loan-record: assets/icons/icon-empty-loan-record.svg
+```
+
+规则：
+
+- 空状态 icon 用于 `result-page` / `list-page` 空态区，尺寸通常大于 24px，由页面空态布局决定。
+- 空状态 icon 可使用 fill / 渐变，不强制 outline 24×24 规范；仍须来自 `assets/icons/`。
+
 ## 6. AI 使用规则
 
 - 生成组件前，先检查是否需要图标。

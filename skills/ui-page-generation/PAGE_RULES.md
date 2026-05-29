@@ -241,6 +241,9 @@ marketing-page-orange:
   background-fill: gradient-surface-warm
 ```
 
+- `review-waiting-page` / `review-result-page` / `result-page` 禁止使用 `gradient-surface-brand-strong`。
+- 切换 `brand theme` 只允许替换同档位主题色，不允许将上述页面背景提升为更强档位。
+
 用户提供背景图规则：
 
 - 用户提供 png / jpg / webp 时，将图片填入当前页面类型的 `background-layer`。
@@ -471,6 +474,7 @@ result-page:
 - 审核中页面沿用结果页基础 pattern。
 - 结果页允许增加任务卡片、推荐产品和后续引导模块。
 - 审核等待页、审核结果页默认可使用 `gradient-surface-brand-soft` 背景层。
+- `result-page` / `review-waiting-page` / `review-result-page` 在任意 `brand theme` 下都必须保持 soft 档位，不得升级到 `gradient-surface-brand-strong`。
 
 ## 15. 协议与说明页框架
 
